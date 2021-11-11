@@ -1,0 +1,16 @@
+[package]
+name = "wait-until"
+version = "1.0.0"
+edition = "2021"
+description = "Repeatedly run a command until it exits successfully"
+license = "MIT"
+repository = "https://github.com/aatifsyed/wait-until"
+
+[dependencies]
+anyhow = "1.0.45"
+async-std = { version = "1.10.0", features = ["unstable", "attributes"] }
+clap = "2.33.3"
+log = "0.4.14"
+parse_duration = "2.1.1"
+pretty_env_logger = "0.4.0"
+structopt = "0.3.25"
