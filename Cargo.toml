@@ -2,6 +2,7 @@
 name = "wait-until"
 version = "1.0.0"
 edition = "2021"
+rust-version = "1.56"
 description = "Repeatedly run a command until it exits successfully"
 license = "MIT"
 repository = "https://github.com/aatifsyed/wait-until"
