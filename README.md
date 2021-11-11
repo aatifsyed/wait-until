@@ -3,7 +3,7 @@ Repeatedly run a command until it's successful.
 
 ## Wait until a server is up
 ```sh
-wait-until ping -c1 example.com & echo server is up
+wait-until ping -c1 example.com && echo server is up
 ```
 
 ## Pause between runs of your command
