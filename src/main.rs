@@ -34,14 +34,15 @@ async fn main() -> anyhow::Result<()> {
     let opt = Opt::from_args_safe()?;
     debug!("opt = {:?}", opt);
 
+    let mut cmd = Command::new(&opt.cmd[0]);
+    let cmd = cmd
+        .args(&opt.cmd[1..])
+        .stdin(Stdio::null())
+        .stdout(verbose_to_stdio(opt.verbose))
+        .stderr(verbose_to_stdio(opt.verbose));
+    debug!("cmd = {:?}", cmd);
+
     loop {
-        let mut cmd = Command::new(&opt.cmd[0]);
-        let cmd = cmd
-            .args(&opt.cmd[1..])
-            .stdin(Stdio::null())
-            .stdout(verbose_to_stdio(opt.verbose))
-            .stderr(verbose_to_stdio(opt.verbose));
-        debug!("cmd = {:?}", cmd);
         let status = cmd.status().await.context("Couldn't run command")?;
         debug!("status = {:?}", status);
         if status.success() {
